@@ -6,9 +6,11 @@
 
 ## Installation
 
+NOTE: You'll need to install [BetterDiscord](https://betterdiscord.app) to use this plugin, install that first!
+
 To install the Better Discord Plugin, follow these steps:
 
-1. Download laod the BetterDiscordExperiments.plugin.js file from this repo
+1. Download the [BetterDiscordExperiments.plugin.js](https://raw.githubusercontent.com/Riddim-GLiTCH/BetterDiscordEperiments/main/BetterDiscordExperiments.plugin.js) file from this repo.
 2. Open the Discord settings and navigate to the "Plugins" tab.
 3. Click the "Open Plugin Folder" button to open the plugins folder.
 4. Move the downloaded plugin file into the plugins folder.

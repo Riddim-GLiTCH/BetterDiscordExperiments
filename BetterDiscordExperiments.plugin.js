@@ -1,7 +1,7 @@
 /**
  * @name BetterDiscordExperiments
  * @description Enables the experiments tab in discord's settings.
- * @author ΜΞΤΔ★N14
+ * @author Riddim_GLiTCH
  * @version 1.0.0
 */
 

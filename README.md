@@ -19,3 +19,12 @@ To install the Better Discord Plugin, follow these steps:
 ## Usage
 
 Once the plugin is installed and Discord has been restarted, the "Experiments" section will appear in the Discord settings. Users can access this section to test experimental features that are not yet available to the general public. It is important to note that these features may be unstable and could potentially cause issues with your Discord client.
+
+
+## Changelog:
+
+### v1.0.0
+initial release.
+
+### v1.0.1
+Completely rewritten from the ground up by Zrodevkaan. The plugin should now function once again with the latest versions of discord.

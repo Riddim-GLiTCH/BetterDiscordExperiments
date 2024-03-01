@@ -28,3 +28,6 @@ initial release.
 
 ### v1.0.1
 Completely rewritten from the ground up by Zrodevkaan. The plugin should now function once again with the latest versions of discord.
+
+### v1.2.0
+Updated the plugin to include the dev banner, which can be toggled in the settings panel. Shoutouts once again to Zrodevkaan for helping with this and improving my poor code again.

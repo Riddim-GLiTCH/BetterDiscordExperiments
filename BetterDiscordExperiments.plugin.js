@@ -1,7 +1,7 @@
 /**
  * @name BetterDiscordExperiments
- * @description Enables the experiments tab in discord's settings. - Snippet used by Discord Previews
- * @author Riddim_GLiTCH
+ * @description Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan
+ * @author Riddim_GLiTCH, Zrodevkaan
  * @version 1.2.0
 */
 /* @module @manifest */
@@ -13,7 +13,7 @@ const manifest = {
         "github_username": "Riddim-GLiTCH"
     }],
     "version": "1.2.0",
-    "description": "Enables the experiments tab in Discord's settings. made possible by a snippet from Discord Previews.",
+    "description": "Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan.",
     "github": "https://github.com/Riddim-GLiTCH/BetterDiscordExperiments",
     "github_raw": "https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/raw/main/BetterDiscordExperiments.plugin.js",
     "changelogImage": "https://RDG.monarchuploader.de/content/cdn/RQLhnpDHgffx/_489399f1-238f-426c-9769-5b79efe95cf6.jpg",

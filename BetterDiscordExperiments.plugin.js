@@ -2,7 +2,7 @@
  * @name BetterDiscordExperiments
  * @description Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan
  * @author Riddim_GLiTCH, Zrodevkaan
- * @version 1.2.0
+ * @version 1.2.1
 */
 /* @module @manifest */
 const manifest = {
@@ -12,18 +12,17 @@ const manifest = {
         "discord_id": "801089753038061669",
         "github_username": "Riddim-GLiTCH"
     }],
-    "version": "1.2.0",
+    "version": "1.2.1",
     "description": "Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan.",
     "github": "https://github.com/Riddim-GLiTCH/BetterDiscordExperiments",
     "github_raw": "https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/raw/main/BetterDiscordExperiments.plugin.js",
     "changelogImage": "https://RDG.monarchuploader.de/content/cdn/RQLhnpDHgffx/_489399f1-238f-426c-9769-5b79efe95cf6.jpg",
     // "changelogDate": "2023-08-14T19:12:56.405Z",
     "changelog": [{
-        "type": "Improvement",
-        "title": "Improvements",
+        "type": "fix",
+        "title": "Hotfix",
         "items": [
-            "Improved handling of the stagng banner on stop.",
-            "Attempted to improve handling of Discord correcting itself upon realizing the user should not have experiments."
+            "Fixed Settings panel not rendering."
         ]
     }]
 };

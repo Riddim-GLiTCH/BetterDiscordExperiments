@@ -12,7 +12,8 @@ To install the Better Discord Plugin, follow these steps:
 
 1. Download the [BetterDiscordExperiments.plugin.js](https://raw.githubusercontent.com/Riddim-GLiTCH/BetterDiscordEperiments/main/BetterDiscordExperiments.plugin.js) file from this repo.
 2. Open the Discord settings and navigate to the "Plugins" tab.
-3. Click the "Open Plugin Folder" button to open the plugins folder.
+3. Click the "Open Plugin Folder" button to open the plugins folder. <br>
+
 ![Where to find the Open Plugin Folder button](https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/assets/87764384/3b50d8e2-c1c1-4098-be52-36529fe31327)
 
 4. Move the downloaded plugin file into the plugins folder.
@@ -20,8 +21,10 @@ To install the Better Discord Plugin, follow these steps:
 
 ## Usage
 
-Once the plugin is installed and Discord has been restarted, the "Experiments" section will appear in the Discord settings.
+Once the plugin is installed and Discord has been restarted, the "Experiments" section will appear in the Discord settings. <br>
+
 ![Where to find experiments](https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/assets/87764384/5a109c28-d3ed-46dd-a9dc-1b0ad1e1d736)
+
 Users can access this section to test experimental features that are not yet available to the general public. It is important to note that these features may be unstable and could potentially cause issues with your Discord client.
 Some of these experiments may access the discord API in a way that your account is not permitted to. This could lead to potential suspension or termination of the account used. Be aware of this when using this plugin.
 

@@ -3,7 +3,7 @@
  * @description Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan
  * @author Riddim_GLiTCH, Zrodevkaan
  * @version 1.2.1
-*/
+ */
 /* @module @manifest */
 const manifest = {
     "name": "BetterDiscordExperiments",
@@ -28,40 +28,31 @@ const manifest = {
 };
 /*@end*/
 
-const { useState, useEffect } = BdApi.React
+const {Webpack, UI, Data, React} = BdApi;
+const {useState, useEffect, createElement} = React
+const {FormSwitch} = Webpack.getByKeys("FormSwitch")
 
-const { FormSwitch } = BdApi.Webpack.getByKeys("FormSwitch")
-
-function GetSetting(settingName)
-{
-    const mySettings = BdApi.Data.load("BetterDiscordExperiments", "settings") || [];
+function GetSetting(settingName) {
+    const mySettings = Data.load("BetterDiscordExperiments", "settings") || [];
     return mySettings[settingName];
 }
 
 function SetSetting(settingName, value) {
-    const mySettings = BdApi.Data.load("BetterDiscordExperiments", "settings") || {};
+    const mySettings = Data.load("BetterDiscordExperiments", "settings") || {};
     mySettings[settingName] = value;
-    BdApi.Data.save("BetterDiscordExperiments", "settings", mySettings);
+    Data.save("BetterDiscordExperiments", "settings", mySettings);
 }
 
-class experiments
-{
-    start() {
-        // const mySettings = BdApi.Data.load("BetterDiscordExperiments", "settings"); // Load Settings
-        // use `GetSetting`
-        let c; webpackChunkdiscord_app.push([[Symbol()],{},r=>c=r.c]); webpackChunkdiscord_app.pop();
-        let u = Object.values(c).find(x=>x?.exports?.default?.getUsers).exports.default;
-        let m = Object.values(u._dispatcher._actionHandlers._dependencyGraph.nodes);
-
-        u.getCurrentUser().flags |= 1;
-        m.find((x)=>x.name === "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]();
-        try {m.find((x)=>x.name === "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({user:{flags: 1}})} catch {};
-        m.find((x)=>x.name === "ExperimentStore").storeDidChange();
-
-        if (GetSetting("showBanner"))
-        {
-            const data = BdApi.Webpack.getByStrings("logsUploaded:new Date().toISOString(),")();
-            const classes = BdApi.Webpack.getByKeys("devBanner");
+class experiments {        
+    startStagingBanner(e) {
+        
+        /*- Lazy fix cause when making this setting gets saved AFTER which causes delay.*/
+        if (e || GetSetting("showBanner")) {
+            const Selector = document.querySelector("[class*=devBanner_]")
+            if (Selector) {Selector.remove(); console.log('Removing banner.'); return;}
+            console.log("Adding banner.")
+            const data = Webpack.getByStrings("logsUploaded:new Date().toISOString(),")();
+            const classes = Webpack.getByKeys("devBanner");
             const div = document.createElement("div");
 
             div.className = `${classes.devBanner} ${classes.staging}`;
@@ -70,16 +61,39 @@ class experiments
 
             document.querySelector("[class*=panels_]").appendChild(div);
         }
+    }
+    
+    start() {
+        // const mySettings = Data.load("BetterDiscordExperiments", "settings"); // Load Settings
+        // use `GetSetting`
+        let c;
+        webpackChunkdiscord_app.push([[Symbol()], {}, r => c = r.c]);
+        webpackChunkdiscord_app.pop();
+        let u = Object.values(c).find(x => x?.exports?.default?.getUsers).exports.default;
+        let m = Object.values(u._dispatcher._actionHandlers._dependencyGraph.nodes);
 
-        BdApi.UI.showToast(
-            "Experiments succesfully injected!",
+        u.getCurrentUser().flags |= 1;
+        m.find((x) => x.name === "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]();
+        try {
+            m.find((x) => x.name === "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({user: {flags: 1}})
+        } catch {
+        }
+        m.find((x) => x.name === "ExperimentStore").storeDidChange();
+
+
+
+        this.startStagingBanner();
+
+        UI.showToast(
+            "Experiments successfully injected!",
             {
                 type: "info",
             }
         );
     }
+
     stop() {
-        { 
+        {
             // Removes the staging banner. (IF FOUND)
             const div = document.querySelector("[class*=devBanner_]");
             if (!div) return;
@@ -89,33 +103,38 @@ class experiments
 
     SettingsPanel() {
         const [showBanner, setShowBanner] = useState(GetSetting("showBanner"));
-    
+
         useEffect(() => {
             SetSetting("showBanner", showBanner);
         }, [showBanner]);
-    
-        return BdApi.React.createElement(
+
+        return createElement(
             'div',
-            { id: 'my-settings' },
-            BdApi.React.createElement(
+            {id: 'my-settings'},
+            createElement(
                 'div',
-                { className: 'setting' },
-                BdApi.React.createElement(
+                {className: 'setting'},
+                createElement(
                     'label',
                     null,
-                    BdApi.React.createElement(FormSwitch, {
+                    createElement(FormSwitch, {
                         children: 'Show Developer Staging Branch Notice',
                         note: 'Under the user account will show the edition of Discord and your version.',
-                        onChange: (e) => setShowBanner(e),
+                        onChange: (e) => {
+                            this.startStagingBanner(e);
+                            setShowBanner(e)
+                        },
                         value: showBanner,
                     })
                 ),
-                BdApi.React.createElement('span', { style:{ color: "white" } }, 'Made with love by Skye and Kaan <3'),
+                createElement('span', {style: {color: "gray", fontsize: '10px', bottom: '0', left: '-5px'}}, 'Made with love by Skye and Kaan <3'),
             )
         );
     }
+
     getSettingsPanel() {
-        return BdApi.React.createElement(this.SettingsPanel);
+        return createElement(this.SettingsPanel.bind(this));
     }
-};
+}
+
 module.exports = experiments

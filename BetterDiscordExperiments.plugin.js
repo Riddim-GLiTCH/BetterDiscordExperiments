@@ -31,7 +31,7 @@ const manifest = {
 
 const { useState, useEffect } = BdApi.React
 
-const { FormSwitch } = BdApi.Webpack.getByKeys("Switch")
+const { FormSwitch } = BdApi.Webpack.getByKeys("FormSwitch")
 
 function GetSetting(settingName)
 {

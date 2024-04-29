@@ -1,3 +1,7 @@
+<div style="text-align: center!important;">
+  <img src="https://riddim-glitch.is-a.dev/assets/Icons/BDE.png" alt="image" width="300">
+</div>
+
 # BetterDiscordExperiments
 
 **BetterDiscordExperiments** is a plugin designed to enable the "Experiments" section in Discord. With this plugin, users can access and test experimental features that are not yet available to the general public.

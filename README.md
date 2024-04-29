@@ -61,3 +61,6 @@ Completely rewritten from the ground up by Zrodevkaan. The plugin should now fun
 
 ### v1.2.0
 Updated the plugin to include the dev banner, which can be toggled in the settings panel. Shoutouts once again to Zrodevkaan for helping with this and improving my poor code again.
+
+### v1.2.1 (Hotfix)
+Fixed Settings panel not loading. (it was one line that broke. ![husk](https://cdn.discordapp.com/emojis/1008576133635260447.webp?size=24&quality=lossless)

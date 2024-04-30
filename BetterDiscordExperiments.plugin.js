@@ -2,7 +2,10 @@
  * @name BetterDiscordExperiments
  * @description Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan
  * @author Riddim_GLiTCH, Zrodevkaan
- * @version 1.2.1
+ * @version 1.2.2
+ * @source https://github.com/Riddim-GLiTCH/BetterDiscordExperiments
+ * @website https://riddim-glitch.is-a.dev
+ * @invite aYxpgkvdvR
  */
 /* @module @manifest */
 const manifest = {
@@ -17,12 +20,12 @@ const manifest = {
     "github": "https://github.com/Riddim-GLiTCH/BetterDiscordExperiments",
     "github_raw": "https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/raw/main/BetterDiscordExperiments.plugin.js",
     "changelogImage": "https://RDG.monarchuploader.de/content/cdn/RQLhnpDHgffx/_489399f1-238f-426c-9769-5b79efe95cf6.jpg",
-    // "changelogDate": "2023-08-14T19:12:56.405Z",
+    "changelogDate": "2024-04-30T11:53:20+0000",
     "changelog": [{
-        "type": "fix",
-        "title": "Hotfix",
+        "type": "Improvement",
+        "title": "Added a warning.",
         "items": [
-            "Fixed Settings panel not rendering."
+            "Added a warning in the experiments page about the risks."
         ]
     }]
 };
@@ -31,6 +34,54 @@ const manifest = {
 const {Webpack, UI, Data, React} = BdApi;
 const {useState, useEffect, createElement} = React
 const {FormSwitch} = Webpack.getByKeys("FormSwitch")
+const css = `
+#experiments-tab {
+    [class^=sectionTitle] {
+      margin-top: 100px;
+      &:before {
+        position: absolute;
+        top: 20px;
+        background-color: rgba(255, 0, 0, 0.200);
+        padding: 5px;
+        border: solid 1px red;
+        border-radius: 5px;
+        padding-bottom: 25px;
+        padding-top: 40px;
+        content: "Enabling some experiments may disrupt Discord's functionality," 
+        " and could lead to crashes, bugs, or glitches." 
+        " Some features may conflict with the app," 
+        " resulting in instability or unexpected behavior." ;
+        text-align: center;
+        color: red;
+        font-size: larger;
+        width: 650px;
+      }
+      &:after {
+        position: absolute;
+        top: 25px;
+        text-align: center;
+        color: red;
+        content: "WARNING!";
+        font-size: xx-large;
+        font-weight: 900;
+        width: 661px;
+        margin: 0px 5px;
+      }
+    }
+    [class^=children_]:after {
+        position: absolute;
+        top: 120px;
+        text-align: center;
+        content: "Exercise caution, enabling some experiments may risk account suspension.";
+        font-size: larger;
+        color: red;
+        width: 650px;
+        margin: 0px 5px;
+        font-weight: 700;
+    }
+}`;
+
+let injectedStyle;
 
 function GetSetting(settingName) {
     const mySettings = Data.load("BetterDiscordExperiments", "settings") || [];
@@ -41,6 +92,18 @@ function SetSetting(settingName, value) {
     const mySettings = Data.load("BetterDiscordExperiments", "settings") || {};
     mySettings[settingName] = value;
     Data.save("BetterDiscordExperiments", "settings", mySettings);
+}
+
+function injectCSS(css) {
+    injectedStyle = document.createElement('style');
+    injectedStyle.innerHTML = css;
+    document.head.appendChild(injectedStyle);
+}
+
+function removeCSS() {
+    if (injectedStyle) {
+      injectedStyle.remove();
+    }
 }
 
 class experiments {        
@@ -89,6 +152,7 @@ class experiments {
                 type: "info",
             }
         );
+        injectCSS(css);
     }
 
     stop() {
@@ -98,6 +162,7 @@ class experiments {
             if (!div) return;
             div.remove();
         }
+        removeCSS()
     }
 
     SettingsPanel() {

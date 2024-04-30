@@ -68,3 +68,6 @@ Updated the plugin to include the dev banner, which can be toggled in the settin
 
 ### v1.2.1 (Hotfix)
 Fixed Settings panel not loading. (it was one line that broke. ![husk](https://cdn.discordapp.com/emojis/1008576133635260447.webp?size=24&quality=lossless) thanks Discord)
+
+### v1.2.2
+Refactor and staging banner restyle (By [@Zrodevkaan]( https://github.com/zrodevkaan ))

@@ -2,7 +2,7 @@
  * @name BetterDiscordExperiments
  * @description Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan
  * @author Riddim_GLiTCH, Zrodevkaan
- * @version 1.2.3
+ * @version 1.2.4
  * @source https://github.com/Riddim-GLiTCH/BetterDiscordExperiments
  * @website https://riddim-glitch.is-a.dev
  * @invite aYxpgkvdvR
@@ -15,7 +15,7 @@ const manifest = {
         "discord_id": "801089753038061669",
         "github_username": "Riddim-GLiTCH"
     }],
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "Enables the experiments tab in discord's settings, using the JS snippet from Discord Previews. Made with love by Skye and Zrodevkaan.",
     "github": "https://github.com/Riddim-GLiTCH/BetterDiscordExperiments",
     "github_raw": "https://github.com/Riddim-GLiTCH/BetterDiscordEperiments/raw/main/BetterDiscordExperiments.plugin.js",
@@ -31,7 +31,7 @@ const manifest = {
 };
 /*@end*/
 
-const {Webpack, UI, Data, React} = BdApi;
+const {Webpack, UI, Data, React, DOM} = BdApi;
 const {useState, useEffect, createElement} = React
 const {FormSwitch} = Webpack.getByKeys("FormSwitch")
 const css = `
@@ -81,8 +81,6 @@ const css = `
     }
 }`;
 
-let injectedStyle;
-
 function GetSetting(settingName) {
     const mySettings = Data.load("BetterDiscordExperiments", "settings") || [];
     return mySettings[settingName];
@@ -92,18 +90,6 @@ function SetSetting(settingName, value) {
     const mySettings = Data.load("BetterDiscordExperiments", "settings") || {};
     mySettings[settingName] = value;
     Data.save("BetterDiscordExperiments", "settings", mySettings);
-}
-
-function injectCSS(css) {
-    injectedStyle = document.createElement('style');
-    injectedStyle.innerHTML = css;
-    document.head.appendChild(injectedStyle);
-}
-
-function removeCSS() {
-    if (injectedStyle) {
-      injectedStyle.remove();
-    }
 }
 
 class experiments {        
@@ -135,7 +121,7 @@ class experiments {
         webpackChunkdiscord_app.pop();
         let u = Object.values(c).find(x => x?.exports?.default?.getUsers).exports.default;
         let m = Object.values(u._dispatcher._actionHandlers._dependencyGraph.nodes);
-
+        DOM.addStyle('Experiments',css)
         u.getCurrentUser().flags |= 1;
         m.find((x) => x.name === "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]();
         try {
@@ -152,7 +138,7 @@ class experiments {
                 type: "info",
             }
         );
-        injectCSS(css);
+        
     }
 
     stop() {
@@ -162,7 +148,7 @@ class experiments {
             if (!div) return;
             div.remove();
         }
-        removeCSS()
+        DOM.removeStyle('Experiments')
     }
 
     SettingsPanel() {

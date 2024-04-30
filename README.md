@@ -71,3 +71,6 @@ Fixed Settings panel not loading. (it was one line that broke. ![husk](https://c
 
 ### v1.2.2
 Refactor and staging banner restyle (By [@Zrodevkaan]( https://github.com/zrodevkaan ))
+
+## v1.2.3
+Added a notice on the experiments page regarding user safety.

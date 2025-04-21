@@ -74,3 +74,9 @@ Refactor and staging banner restyle (By [@Zrodevkaan]( https://github.com/zrodev
 
 ### v1.2.3
 Added a notice on the experiments page regarding user safety.
+
+### 1.3 
+*this version was lost to time. Whoopsies*
+
+### 1.4
+Reworked Experiment enabler method by [@Zrodevkaan](https://github.com/zrodevkaan) (The old one got patched 😭)
